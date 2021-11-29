@@ -1,12 +1,13 @@
 import React from 'react';
 import './NavBar.css'
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
+import CarWidget from '../CarWidget/CarWidget';
+
 
 const NavBar = () => {
 
     return (
-        <AppBar>
+        <div>
             <nav className="container-nav">
             
                 <h3 className="title">Lore's Shop</h3>
@@ -17,8 +18,9 @@ const NavBar = () => {
                     <li><Button href="#text-buttons" variant="text" className="btn-nav">Contact</Button></li>
                     <li><Button href="#text-buttons" variant="text" className="btn-nav">About Us</Button></li>
                 </ul>
+                <CarWidget/>
             </nav>
-        </AppBar>
+        </div>
     )
 }
 
