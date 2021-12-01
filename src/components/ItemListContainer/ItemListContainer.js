@@ -1,18 +1,20 @@
 import React from 'react';
-import './ListItems.css';
+import './ItemListContainer.css';
 import Item from '../Item/Item';
 
 
-const ListItems = () => {
+const ItemListContainer = () => {
 
     const dataProducts = [
         {
           name: 'Camiseta con Dibujo',
-          price: '$ 3000'
+          price: '$ 3000',
+          stock: '10'
         },
         {
             name: 'Camiseta sin Dibujo',
-            price: '$ 2000'
+            price: '$ 2000',
+            stock: '5'
         }
 
     ]
@@ -22,14 +24,15 @@ const ListItems = () => {
 
     return(
         <div className="container-list">
-            <h4>Productos destacados</h4>
+            <h2>Productos destacados</h2>
             {dataProducts.map((product) => {
                 return(
-                    <Item name={product.name} price={product.price}></Item>
+                    <Item name={product.name} price={product.price} stock={product.stock}></Item>
                 )
             })}
+           
         </div>
     );
 }
 
-export default ListItems
+export default ItemListContainer

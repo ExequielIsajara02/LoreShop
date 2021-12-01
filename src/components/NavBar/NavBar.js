@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css'
 import Button from '@mui/material/Button';
-import CarWidget from '../CarWidget/CarWidget';
+import CartWidget from '../CartWidget/CartWidget';
 
 
 const NavBar = () => {
@@ -18,7 +18,7 @@ const NavBar = () => {
                     <li><Button href="#text-buttons" variant="text" className="btn-nav">Contact</Button></li>
                     <li><Button href="#text-buttons" variant="text" className="btn-nav">About Us</Button></li>
                 </ul>
-                <CarWidget/>
+                <CartWidget/>
             </nav>
         </div>
     )
