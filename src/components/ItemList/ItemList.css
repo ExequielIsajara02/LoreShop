@@ -1,0 +1,24 @@
+.container-list {
+    display: grid;
+    grid-template-columns: repeat(2,500px);
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.title-products {
+    grid-column: 1 / 3;
+    padding-bottom: 20px;
+}
+
+.loader {
+    grid-column: 1 / 3;
+}
+
+
+
+
+.img-product {
+    width: 65%;
+    height: 300px;
+    cursor: pointer;
+}

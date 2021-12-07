@@ -34,4 +34,10 @@
     color: #fff;
     background-color: #00695c;
     cursor: pointer;
+    border: none;
+    font-size: 16px;
+}
+
+.add-on:active {
+    background-color: #00897b;
 }
