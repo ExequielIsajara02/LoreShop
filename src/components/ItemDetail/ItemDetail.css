@@ -8,20 +8,14 @@
 .detail-text {
     width: 100%;
     text-align: center;
+    margin-top: 40px;
+    display: block;
 }
 
 .detail-text p {
-    width: 100%;
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.btn-buy {
-    width: 200px;
-    padding: 10px;
-    margin-top: 30px;
-    background-color: #00695c;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 20px;
-    border: none;
+.detail-image {
+    margin-top: 20px;
 }

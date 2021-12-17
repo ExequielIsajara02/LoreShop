@@ -14,18 +14,14 @@ const ItemList = () => {
         {
           id: 1,
           title: 'Remera Anime',
-          description: 'Remera negra Talle L',
           price: '$ 3000',
-          pictureUrl: `${images.img1}`,
-          stock: 10
+          pictureUrl: `${images.img1}`
         },
         {
             id: 2,
             title: 'Remera Anime',
-            description: 'Remera blanca Talle S',
             pictureUrl: `${images.img2}`,
-            price: '$ 2000',
-            stock: 5
+            price: '$ 2000'
         }
 
     ]
@@ -63,12 +59,10 @@ const ItemList = () => {
                 items.map((item) => {
                     return(
                         
-                        <Item key={item.id} 
+                        <Item id={item.id} 
                             title={item.title} 
                             price={item.price}
-                            description={item.description}
                             img={item.pictureUrl}
-                            stock={item.stock} 
                         >
                         </Item>
                     )

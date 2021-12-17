@@ -32,12 +32,17 @@
 }
 
 .content-list li .btn-nav {
-    color: #fff;
+
     font-family: 'Oleo Script', cursive;
     font-weight: bold;
 }
 
 .content-list li .btn-nav:hover {
     background-color: #00695c;
+}
+
+.content-list li .btn-nav .btn-text {
+    color: #fff;
+    text-decoration: none;
 }
 

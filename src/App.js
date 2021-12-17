@@ -1,15 +1,14 @@
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import React from 'react';
+import AppRouter from './components/AppRouter/AppRouter';
 
 
 
 function App() {
   
   return (
-    <div className="App">
-      <NavBar/>
-      <ItemListContainer/>
+    <div className='App'>
+      <AppRouter/>
     </div>
   );
 }

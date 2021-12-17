@@ -1,13 +1,16 @@
-import ItemCount from '../ItemCount/ItemCount';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
-const Item = ({title, price, stock, description, img}) => {
+
+const Item = ({title, price, img, id}) => {
     return(
         <div className="itemList-container">
             <div>
                 <img src={img} alt={title} className="img-product"/>
                 <p>Price: {price}</p>
-                <p>Description: {description}</p>
-                <ItemCount stock={stock}></ItemCount>
+                <Link to={`/item/${id}`} style={{textDecoration: 'none', fontSize: '20px', color: '#00695c'}}>
+                    <p className='more-btn'>Ver más</p>
+                </Link>
             </div>
         </div>
     )
