@@ -8,7 +8,8 @@ import NavBar from "../NavBar/NavBar";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ItemDetailPage from "../Pages/ItemDetailPage/ItemDetailPage";
 import CategoriesItem from "../CategoriesItem/CategoriesItem";
-import CategoriesBanner from "../CategoriesBanner/CategoriesBanner";
+import CartPage from "../Pages/Cart/CartPage";
+
 
 
 
@@ -20,8 +21,9 @@ const AppRouter = () => {
                 <NavBar/>
                 <Routes>
                     <Route path='/item/:id' element={<ItemDetailPage/>} />
-                    <Route path='/category/:id' element={<CategoriesBanner/>} />
+                    <Route path='/category/:id' element={<CategoriesItem/>} />
                     <Route path='/category' element={<CategoriesContainer/>}/>
+                    <Route path='/cart' element={<CartPage/>}></Route>
                     <Route path='/about' element={<AboutUs/>} />
                     <Route path='/contact' element={<Contact/>}></Route>
                     <Route path='/' element={<HomePage/>} />

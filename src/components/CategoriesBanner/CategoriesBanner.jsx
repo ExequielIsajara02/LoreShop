@@ -1,10 +1,11 @@
 import React from "react";
+import './CategoriesBanner.css'
 
-const CategoriesBanner = ({name, img}) => {
+const CategoriesBanner = ({price, img}) => {
     return(
         <div>
-           <h2>{name}</h2>
-           <img src={img} />
+           <p>{price}</p>
+           <img src={img} className="banner-img"/>
         </div>
     )
 }

@@ -1,15 +1,18 @@
 import React, {useState} from "react";
 import "./ItemCount.css"
+import { Link } from "react-router-dom";
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock, onCart, sendItem}) => {
     const [number, setNumber] = useState(0)
     const [add, setAdd] = useState(stock)
 
     const upNumber = () => {
-       if(number < stock) {
-        setNumber(number + 1)
-        console.log("El estado es: " + number)
-       }
+       
+        if(number < stock) {
+            setNumber(number + 1)
+            console.log("El estado es: " + number)
+            onCart(number + 1)
+        }
     }
 
     const downNumber = () => {
@@ -22,6 +25,11 @@ const ItemCount = ({stock}) => {
     const addCart = () => {
         setAdd(stock - number)
         console.log("item agregado")
+        
+    }
+
+    const sentToCart = () => {
+        sendItem()
     }
 
 
@@ -37,6 +45,10 @@ const ItemCount = ({stock}) => {
                 <button onClick={downNumber}>-</button>
             </div>
             <button className="add-on" onClick={addCart}>Agregar al carrito</button>
+            <Link to='/cart' style={{'textDecoration':'none'}}>
+                <button onClick={sentToCart} className="send-cart">Ver carrito</button>
+            </Link>
+           
         </div>
     )
 }

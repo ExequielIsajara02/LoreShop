@@ -1,74 +1,48 @@
 import React, {useState, useEffect} from "react";
+import './CategoriesContainer.css'
 import images from "../../assets/images";
 import CategoriesItem from "../CategoriesItem/CategoriesItem";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 const CategoriesContainer = () => {
 
-    const [categories, setCategories] = useState([])
+
+    const [characters, setCharacters] = useState([]);
 
 
-    const categoriesProducts = [
-        {
-            id: '1',
-            name: 'Anime',
-            title: 'Remera Anime',
-            pictureUrl: `${images.img1}`
-        },
-        {
-            id: '2',
-            name: 'Videogame',
-            title: 'Remera videojuegos',
-            pictureUrl: `${images.img3}`
-        }
-    ]
+    
 
-    const categoriesPromise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-         resolve(categoriesProducts)
-        }, 2000)
-    })
- 
-    const getCategoriesPromise = () => {
-        categoriesPromise.then((response) => {
-            setCategories(response)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-         
-    }
- 
-    useEffect(() =>{
-        getCategoriesPromise()
-    }, [])
- 
+    const getPromise = async () => {
+        const request = await fetch('https://mocki.io/v1/0eadb388-c601-4bbd-a638-34a4ec75330e');
+        const data = await request.json();
 
+        console.log(data);
+        setCharacters(data);
+    };
 
+    useEffect(() => {
+        getPromise();
+    }, []);
 
-
-
-    return(
+    return (
         <div>
-            {
-                categories.map((product) => {
-                    return(
-                        <div key={product.id}>
-                            <Link to={`/category/${product.id}`}>
-                                <CategoriesItem
-                                    name={product.name}
-                                    title={product.title}
-                                    pictureUrl={product.pictureUrl}
-                                    id={product.id}
-                                >
-                                </CategoriesItem>
-                            </Link>
-                        </div>
-                    )
-                })
-            }
+            {characters.map((character) => {
+                return (
+                    <Link to={`/category/${character.id}`} style={{'textDecoration': 'none'}}>
+                        <div key={character.id} className="category-container">
+                            <p className="category-text">{character.category}</p>
+                            <img src={character.pictureUrl} className="category-img"/>
+                        </div>  
+                    </Link>
+                    
+                );
+            })}
         </div>
-    )
+    );
+
+
 }
 
 export default CategoriesContainer

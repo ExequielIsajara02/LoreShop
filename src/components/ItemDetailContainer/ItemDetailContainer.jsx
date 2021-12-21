@@ -8,6 +8,7 @@ const ItemDetailContainer = () => {
 
     const [details, setDetails] = useState([])
     const [load, setLoad] = useState(true)
+   
 
     console.log("Parametros por ruta ", useParams())
 
@@ -47,6 +48,8 @@ const ItemDetailContainer = () => {
        }, 2000)
     })
 
+
+
     const getDetailPromise = () => {
         detailsPromise.then((response) => {
             setDetails(response)
@@ -59,7 +62,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() =>{
         getDetailPromise()
-    }, [])
+    }, [id])
 
 
     return(
@@ -76,6 +79,7 @@ const ItemDetailContainer = () => {
                         price={detail.price}
                         img={detail.pictureUrl}
                         stock={detail.stock}
+                        id={detail.id}
                     >
                     </ItemDetail>
                 )
