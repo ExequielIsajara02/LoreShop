@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./ItemCount.css"
 import { Link } from "react-router-dom";
 
 const ItemCount = ({stock, onCart, sendItem}) => {
     const [number, setNumber] = useState(0)
     const [add, setAdd] = useState(stock)
+
 
     const upNumber = () => {
        
@@ -25,13 +26,11 @@ const ItemCount = ({stock, onCart, sendItem}) => {
     const addCart = () => {
         setAdd(stock - number)
         console.log("item agregado")
+        sendItem()
         
     }
 
-    const sentToCart = () => {
-        sendItem()
-    }
-
+   
 
     return(
         <div className="count-container">
@@ -44,11 +43,7 @@ const ItemCount = ({stock, onCart, sendItem}) => {
                 <p>Cantidad: {number}</p>
                 <button onClick={downNumber}>-</button>
             </div>
-            <button className="add-on" onClick={addCart}>Agregar al carrito</button>
-            <Link to='/cart' style={{'textDecoration':'none'}}>
-                <button onClick={sentToCart} className="send-cart">Ver carrito</button>
-            </Link>
-           
+            <button className="add-on" onClick={addCart}>Comprar</button>
         </div>
     )
 }

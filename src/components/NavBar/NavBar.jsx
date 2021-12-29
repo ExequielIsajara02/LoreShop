@@ -5,11 +5,13 @@ import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom'
 
 
+
 const NavBar = () => {
+
 
     return (
         <div>
-            <nav className="container-nav">
+            <nav>
 
                 <Link to={'/'} style={{textDecoration: 'none'}}><h3 className="title">Lore's Shop</h3></Link>
 
@@ -38,6 +40,7 @@ const NavBar = () => {
                         </Button>
                     </li>
                 </ul>
+                
                 <CartWidget/>
             </nav>
         </div>

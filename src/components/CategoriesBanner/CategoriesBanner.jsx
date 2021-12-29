@@ -5,7 +5,7 @@ const CategoriesBanner = ({price, img}) => {
     return(
         <div>
            <p>{price}</p>
-           <img src={img} className="banner-img"/>
+           <img src={img} className="banner-img" alt="imagen-anime"/>
         </div>
     )
 }

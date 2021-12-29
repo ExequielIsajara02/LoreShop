@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import images from '../../assets/images';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import ProductsContext from "../../context/CartContext/CartContext";
 
 
 const ItemDetailContainer = () => {
@@ -35,11 +36,6 @@ const ItemDetailContainer = () => {
     ]
         
     
-        
-
-    
-
-    
 
     const detailsPromise = new Promise((resolve, reject) => {
        setTimeout(() => {
@@ -62,7 +58,7 @@ const ItemDetailContainer = () => {
 
     useEffect(() =>{
         getDetailPromise()
-    }, [id])
+    }, [])
 
 
     return(
@@ -79,7 +75,7 @@ const ItemDetailContainer = () => {
                         price={detail.price}
                         img={detail.pictureUrl}
                         stock={detail.stock}
-                        id={detail.id}
+                        key={detail.id}
                     >
                     </ItemDetail>
                 )

@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './CategoriesContainer.css'
-import images from "../../assets/images";
-import CategoriesItem from "../CategoriesItem/CategoriesItem";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 
 const CategoriesContainer = () => {

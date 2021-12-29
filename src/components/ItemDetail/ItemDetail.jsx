@@ -1,13 +1,23 @@
-import React,  {useState} from  "react";
+import React,  {useContext, useState, useEffect} from  "react";
 import './ItemDetail.css'
 import ItemCount from "../ItemCount/ItemCount";
+import ProductsContext from "../../context/CartContext/CartContext";
+import { useParams } from "react-router-dom";
 
-const ItemDetail = ({title, description, price, img, stock, id}) => {
+const ItemDetail = ({title, description, price, img, stock, key}) => {
 
-    const [amount, setAmount] = useState(0)
+    const { addProducts, products} = useContext(ProductsContext)
+
+    const { id } = useParams()
+
+    console.log("El id de este producto: ", id)
+
+
+
     const [itemCart, setItemCart] = useState({
-        id: id,
+        id: key,
         name: title,
+        price: price,
         quantity: 0
     })
 
@@ -17,8 +27,11 @@ const ItemDetail = ({title, description, price, img, stock, id}) => {
     }
 
     const sendItem = () => {
-        console.log("El objeto es: ", itemCart)
+        addProducts(itemCart, id)
+        console.log("Productos agregados: ", products)
     }
+
+    
 
 
     return(
