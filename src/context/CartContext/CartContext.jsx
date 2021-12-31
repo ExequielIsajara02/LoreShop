@@ -6,26 +6,43 @@ const ProductsContext = createContext()
 const ProductsProvider = ({children}) => {
 
     const [products, setProducts] = useState([])
+    const [total, setTotal] = useState(0)
+
     
 
-    const addProducts  = (product, productsId) => {
-        console.log("Accediendo al producto desde el context")
+    const addProducts  = (product) => {
+        
+        setTotal(total + product.price * product.quantity)
 
-        let arrayProducts = products.some(element => element === product);
-
-        if(arrayProducts) {
-            setProducts([product])
-        }
-        if(arrayProducts === false){
+        if(products.includes(product) === false) {
             setProducts([...products, product])
-
         }
+
+       
+    }
+
+    const removeAllProducts = () => {
+        setProducts([])
+        setTotal(0)
+        
     }
 
 
+    const removeProduct = () => {
+        
+    }
+
+    
+    
+    
+
     const dataProducts = {
         products,
-        addProducts
+        addProducts,
+        removeProduct,
+        removeAllProducts,
+        total
+
     }
 
     return(

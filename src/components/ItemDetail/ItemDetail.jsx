@@ -4,20 +4,17 @@ import ItemCount from "../ItemCount/ItemCount";
 import ProductsContext from "../../context/CartContext/CartContext";
 import { useParams } from "react-router-dom";
 
-const ItemDetail = ({title, description, price, img, stock, key}) => {
+const ItemDetail = ({title, description, price, img, stock, id}) => {
 
     const { addProducts, products} = useContext(ProductsContext)
 
-    const { id } = useParams()
-
-    console.log("El id de este producto: ", id)
-
-
 
     const [itemCart, setItemCart] = useState({
-        id: key,
+        id: id,
         name: title,
         price: price,
+        img: img,
+        stock: stock,
         quantity: 0
     })
 
@@ -27,11 +24,9 @@ const ItemDetail = ({title, description, price, img, stock, key}) => {
     }
 
     const sendItem = () => {
-        addProducts(itemCart, id)
+        addProducts(itemCart)
         console.log("Productos agregados: ", products)
     }
-
-    
 
 
     return(

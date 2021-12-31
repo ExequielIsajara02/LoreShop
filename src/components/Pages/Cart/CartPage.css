@@ -1,0 +1,14 @@
+.product-image {
+    min-width: 200px;
+    width: 100px;
+}
+
+.cart-list-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 1px solid #000;
+    font-size: 14px;
+    font-weight: bold;
+}

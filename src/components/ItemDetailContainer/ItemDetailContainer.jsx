@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
             id: '1',
             title: 'Remera Anime',
             description: 'Remera negra Talle L',
-            price: '$ 3000',
+            price: 3000,
             pictureUrl: `${images.img1}`,
             stock: 10
         },
@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
             id: '2',
             title: 'Remera Anime',
             description: 'Remera blanca Talle S',
-            price: '$ 2000',
+            price: 2000,
             pictureUrl: `${images.img2}`,
             stock: 5
         }
@@ -75,7 +75,7 @@ const ItemDetailContainer = () => {
                         price={detail.price}
                         img={detail.pictureUrl}
                         stock={detail.stock}
-                        key={detail.id}
+                        id={detail.id}
                     >
                     </ItemDetail>
                 )
