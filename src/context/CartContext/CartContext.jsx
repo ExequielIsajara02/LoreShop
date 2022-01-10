@@ -8,39 +8,40 @@ const ProductsProvider = ({children}) => {
     const [products, setProducts] = useState([])
     const [total, setTotal] = useState(0)
 
-    
-
-    const addProducts  = (product) => {
+    const addProductsInCart  = (product) => {
         
-        setTotal(total + product.price * product.quantity)
+        // Comprobar que el producto existe
 
-        if(products.includes(product) === false) {
-            setProducts([...products, product])
+        const cartProduct = products.find(element => element.id === product.id)
+
+        if(cartProduct) {
+            setTotal(total + product.price, + product.quantity + 1)
         }
-
+        else {
+            setProducts([...products, product])
+            setTotal(total + product.price * product.quantity)
+        }
+        
        
     }
 
-    const removeAllProducts = () => {
+    const removeProductInCart = (cartItem) => {
+        setProducts(products.filter(product => product.id !== cartItem.id))
+        setTotal(total - cartItem.price * cartItem.quantity)
+    }
+
+    const removeAllProductsInCart = () => {
         setProducts([])
         setTotal(0)
         
     }
-
-
-    const removeProduct = () => {
-        
-    }
-
-    
-    
     
 
     const dataProducts = {
         products,
-        addProducts,
-        removeProduct,
-        removeAllProducts,
+        addProductsInCart,
+        removeProductInCart,
+        removeAllProductsInCart,
         total
 
     }

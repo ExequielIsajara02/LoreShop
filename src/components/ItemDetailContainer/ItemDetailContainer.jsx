@@ -1,85 +1,64 @@
-import React, {useEffect, useState, useContext} from "react";
-import images from '../../assets/images';
+import React, {useEffect, useState} from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import LoaderPage from "../LoaderPage/LoaderPage";
 import { useParams } from "react-router-dom";
-import ProductsContext from "../../context/CartContext/CartContext";
+import { doc, getDoc } from 'firebase/firestore'
+import db from "../../firebase";
 
 
 const ItemDetailContainer = () => {
 
     const [details, setDetails] = useState([])
     const [load, setLoad] = useState(true)
-   
-
-    console.log("Parametros por ruta ", useParams())
 
     const { id } = useParams()
+   
 
-    const Details = [
-        {
-            id: '1',
-            title: 'Remera Anime',
-            description: 'Remera negra Talle L',
-            price: 3000,
-            pictureUrl: `${images.img1}`,
-            stock: 10
-        },
-        {
-            id: '2',
-            title: 'Remera Anime',
-            description: 'Remera blanca Talle S',
-            price: 2000,
-            pictureUrl: `${images.img2}`,
-            stock: 5
+    async function getItemDetail(db) {
+        const docRef = doc(db, 'products', id)
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+            console.log("Document ID: ", docSnap.id)
+            console.log("Document data: ", docSnap.data())
+
+            let itemDetail = docSnap.data();
+            itemDetail.id = docSnap.id
+            console.log("El producto final a mostrar es: ", itemDetail)
+            setDetails(itemDetail)
+            setLoad(false)
         }
-    
-    ]
-        
-    
-
-    const detailsPromise = new Promise((resolve, reject) => {
-       setTimeout(() => {
-        setLoad(false)
-        resolve(Details)
-       }, 2000)
-    })
-
-
-
-    const getDetailPromise = () => {
-        detailsPromise.then((response) => {
-            setDetails(response)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-        
+        else {
+            console.log("No such document")
+        }
     }
 
     useEffect(() =>{
-        getDetailPromise()
-    }, [])
+        /* getProducts(db).then((response) => {
+            setDetails(response)
+            setLoad(false)
+        }) */
+        getItemDetail(db)
+    }, [id])
 
 
     return(
         <div>
             {
-                load ? <p>Loading....</p>
+                load ? <LoaderPage/>
                 :
-                details.filter(detailsItem => detailsItem.id === id).map((detail) => {
-                return(
-                    
+                <div>
                     <ItemDetail 
-                        title={detail.title}
-                        description={detail.description}
-                        price={detail.price}
-                        img={detail.pictureUrl}
-                        stock={detail.stock}
-                        id={detail.id}
+                        id={details.id}
+                        title={details.title}
+                        price={details.price}
+                        stock={details.stock}
+                        img={details.pictureUrl}
+                        description={details.description}
                     >
                     </ItemDetail>
-                )
-                })
+                </div>
+                
+                
             }
         </div>
     )

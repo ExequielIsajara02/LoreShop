@@ -1,0 +1,11 @@
+.category-banner {
+    display: grid;
+    grid-template-columns: repeat(2,500px);
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.category-loader {
+    grid-column: 1 / 3;
+}
+

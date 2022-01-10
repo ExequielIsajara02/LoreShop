@@ -1,6 +1,6 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import "./ItemCount.css"
-import { Link } from "react-router-dom";
+
 
 const ItemCount = ({stock, onCart, sendItem}) => {
     const [number, setNumber] = useState(0)
@@ -22,6 +22,7 @@ const ItemCount = ({stock, onCart, sendItem}) => {
             setNumber(number - 1)
         }
     }
+
 
     const addCart = () => {
         setAdd(stock - number)

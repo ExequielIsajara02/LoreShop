@@ -1,36 +1,50 @@
 import React, {useState, useEffect} from "react";
 import './CategoriesContainer.css'
 import { Link } from "react-router-dom";
+import db from '../../firebase'
+import {collection, getDocs } from 'firebase/firestore';
+import images from "../../assets/images";
 
 
 const CategoriesContainer = () => {
 
 
-    const [characters, setCharacters] = useState([]);
+    const [categories, setCategories] = useState([]);
 
 
+    async function getItemsCategory(db) {
+        const categoriesCol = collection(db, 'category-products');
+        const categoriesSnapshot = await getDocs(categoriesCol);
+        const categoriesList = categoriesSnapshot.docs.map(doc => {
+            console.log("Documento firebase ID: ", doc.id)
+            console.log("Documento firebase: ", doc.data())
+            let categories = doc.data();
+            categories.id = doc.id;
+            console.log("Producto final: ", categories)
+            return categories
+        });
+        return categoriesList;
+    }
     
 
-    const getPromise = async () => {
-        const request = await fetch('https://mocki.io/v1/0eadb388-c601-4bbd-a638-34a4ec75330e');
-        const data = await request.json();
-
-        console.log(data);
-        setCharacters(data);
-    };
-
+    // Se montara y actualizaran los datos del o los componentes
     useEffect(() => {
-        getPromise();
-    }, []);
+        getItemsCategory(db).then((result) => {
+            console.log("La respuesta de la promesa es: ", result)
+            setCategories(result)
+        })
+    }, [])
+
+
 
     return (
         <div>
-            {characters.map((character) => {
+            {categories.map((category) => {
                 return (
-                    <Link to={`/category/${character.id}`} style={{'textDecoration': 'none'}}>
-                        <div key={character.id} className="category-container">
-                            <p className="category-text">{character.category}</p>
-                            <img src={character.pictureUrl} className="category-img"/>
+                    <Link to={`/category/${category.category}`} style={{'textDecoration': 'none'}}>
+                        <div key={category.id} className="category-container">
+                            <p className="category-text" style={{'textTransform': 'uppercase'}}>{category.category}</p>
+                            <img src={images[category.pictureUrl]} className="category-img" alt={category.title}/>
                         </div>  
                     </Link>
                     

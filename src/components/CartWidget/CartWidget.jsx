@@ -13,6 +13,8 @@ const CartWidget = () => {
         setShow(!show)
     }
 
+    console.log("Productos agregados desde el carrito: ", products)
+
     return(
         <div className="cart-container">
             <div onClick={showCart}>

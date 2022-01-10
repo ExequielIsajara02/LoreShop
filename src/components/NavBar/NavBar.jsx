@@ -15,31 +15,26 @@ const NavBar = () => {
 
                 <Link to={'/'} style={{textDecoration: 'none'}}><h3 className="title">Lore's Shop</h3></Link>
 
-                <ul className="content-list">
-                    <li>
-                        <Button href="#text-buttons" variant="text" className="btn-nav">
-                            <Link to={'/'} className='btn-text'>Home</Link>
-                        </Button>
-                    </li>
+                <div className="content-list">
+                    <Link to={'/'} style={{'textDecoration' : 'none'}}>
+                        <Button href="#text-buttons" variant="text" className="btn-nav">Home</Button>
+                    </Link>
 
-                    <li>
-                        <Button href="#text-buttons" variant="text" className="btn-nav">
-                            <Link to={'/category'} className='btn-text'>Category</Link>
-                        </Button>
-                    </li>
+                    
+                    <Link to={'/category'} style={{'textDecoration' : 'none'}}>
+                        <Button href="#text-buttons" variant="text" className="btn-nav">Category</Button>
+                    </Link>
 
-                    <li>
-                        <Button href="#text-buttons" variant="text" className="btn-nav">
-                            <Link to={'/contact'} className='btn-text'>Contact</Link>
-                        </Button>
-                    </li>
+                
+                    <Link to={'/contact'} style={{'textDecoration' : 'none'}}>
+                        <Button href="#text-buttons" variant="text" className="btn-nav">Contact</Button>
+                    </Link>
+                    
 
-                    <li>
-                        <Button href="#text-buttons" variant="text" className="btn-nav">
-                            <Link to={'/about'} className='btn-text'>About Us</Link>
-                        </Button>
-                    </li>
-                </ul>
+                    <Link to={'/about'} style={{'textDecoration' : 'none'}}>
+                        <Button href="#text-buttons" variant="text" className="btn-nav">About us</Button>
+                    </Link>
+                </div>
                 
                 <CartWidget/>
             </nav>

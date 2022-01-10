@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './ModalCart.css'
+import images from "../../assets/images";
 
 const ModalCart = ({products, total}) => {
 
@@ -22,7 +23,7 @@ const ModalCart = ({products, total}) => {
                 products.map((product) => {
                     return(
                         <div key={product.id} className="product">
-                            <img src={product.img} className="cart-image"/>
+                            <img src={images[product.img]} className="cart-image"/>
                             <p>$ {product.price}</p>
                             <span>Cant: {product.quantity}</span>
                         </div>

@@ -8,16 +8,14 @@ import NavBar from "../NavBar/NavBar";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ItemDetailPage from "../Pages/ItemDetailPage/ItemDetailPage";
 import CategoriesItem from "../CategoriesItem/CategoriesItem";
-import CartPage from "../Pages/Cart/CartPage";
-
-
-
+import CartPage from "../Pages/Cart/CartPage"
 
 
 const AppRouter = () => {
     return(
         <Router>
-            <div>
+            
+            <>
                 <NavBar/>
                 <Routes>
                     <Route path='/item/:id' element={<ItemDetailPage/>} />
@@ -29,7 +27,7 @@ const AppRouter = () => {
                     <Route path='/' element={<HomePage/>} />
                     <Route path='*' element={<NotFoundPage/>} />
                 </Routes>
-            </div>
+            </>
         </Router>
     )
 }

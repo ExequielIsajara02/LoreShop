@@ -12,3 +12,13 @@
     font-size: 14px;
     font-weight: bold;
 }
+
+.remove-product-btn {
+    background-color: #cc0000;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
