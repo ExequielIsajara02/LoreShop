@@ -1,0 +1,12 @@
+
+.buy-ticket h2 {
+    padding: 0 10px;
+    padding-bottom: 5px;
+    background-color: #00695c;
+    color: #fff;
+    margin-top: 0;
+}
+
+.buy-ticket p {
+    padding: 0 10px;
+}

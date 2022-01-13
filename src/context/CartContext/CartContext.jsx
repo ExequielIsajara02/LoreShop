@@ -14,14 +14,13 @@ const ProductsProvider = ({children}) => {
 
         const cartProduct = products.find(element => element.id === product.id)
 
-        if(cartProduct) {
-            setTotal(total + product.price, + product.quantity + 1)
-        }
-        else {
+        if(!cartProduct) {
             setProducts([...products, product])
             setTotal(total + product.price * product.quantity)
         }
-        
+        else {
+            setTotal(total + product.price * product.quantity)
+        }
        
     }
 

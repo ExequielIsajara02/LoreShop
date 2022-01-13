@@ -4,10 +4,21 @@ import ProductsContext from "../../../context/CartContext/CartContext";
 import { Link } from "react-router-dom";
 import images from "../../../assets/images";
 import './CartPage.css'
+import ContactModal from "../../ContactModal/ContactModal";
 
 const CartPage = () => {
 
+    const [open, setOpen] = useState(false)
+
+    const modalFormOpen = () => {
+        setOpen(true)
+    }
+    const modalFormClose = () => {
+        setOpen(false)
+    }
+
     const {products, total, removeAllProductsInCart, removeProductInCart} = useContext(ProductsContext)
+    
     
 
     return(
@@ -36,11 +47,11 @@ const CartPage = () => {
                         <p>Total</p>
                         <span>${total}</span>
                     </div>
-                    {total > 0 && <button onClick={removeAllProductsInCart}>Confirmar compra</button>}
+                    {total > 0 && <button onClick={modalFormOpen}>Confirmar compra</button>}
                 </div>
-                
                 </>
             }
+            <ContactModal formOpen={open} formClose={modalFormClose} formProducts={products} totalPrice={total}></ContactModal>
         </div>
     )
 }
