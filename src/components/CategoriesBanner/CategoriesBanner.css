@@ -2,12 +2,26 @@
     margin-top: 20px;
 }
 
+.category p {
+    margin-top: 5px;
+}
+
 .banner-img {
-    width: 300px;
-    height: 300px;
+    max-width: 400px;
+    width: 75%;
+    height: 100%;
 }
 
 .show-more {
     color: #00695c;
     font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 720px){
+    .banner-img {
+        width: 75%;
+        height: 100%;
+    }
 }

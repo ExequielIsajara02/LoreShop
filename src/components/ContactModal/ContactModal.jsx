@@ -26,8 +26,7 @@ const ContactModal = ({formOpen, formClose, formProducts, totalPrice}) => {
 
     // Se identifica que datos está ingresando el comprador atraves del type de cada input
     const entryData = (e) => {
-        console.log(e.target.name)
-
+        
         const {name, value} = e.target;
         setData({...formData, [name] : value})
     }
@@ -35,16 +34,12 @@ const ContactModal = ({formOpen, formClose, formProducts, totalPrice}) => {
     // Se guarda los datos del comprador y la compra que realizo en un objeto
     const sendOrder = () => {
 
-        console.log("Buyer: ", formData)
-        console.log("Items: ", formProducts)
-
         // Objeto que guardara los datos del comprador
         let order = {}
         order.buyer = formData;
         order.items = formProducts;
         order.total = totalPrice;
 
-        console.log("Enviar orden", 'orders')
         updateOrder(order)
     }
 
@@ -81,13 +76,19 @@ const ContactModal = ({formOpen, formClose, formProducts, totalPrice}) => {
                    )
                    :
                   <>
-                    <DialogTitle>Completa tus datos</DialogTitle>
+                    <DialogTitle className="form-title">Completa tus datos</DialogTitle>
                     <DialogContent>
                      <Box component="form" noValidate autoComplete='off' className='form-container'>
-                        <TextField label="Name" name='name' variant='outlined' value={formData.name} onChange={entryData}></TextField>
-                        <TextField label="Email" name='email' variant='outlined' value={formData.email} onChange={entryData}></TextField>
-                        <TextField label="Phone" name='phone' variant='outlined' value={formData.phone} onChange={entryData}></TextField>
-                        <Button variant='outlined' onClick={sendOrder}>Confirmar datos</Button>
+                        <TextField label="Name" name='name' variant='outlined' value={formData.name} onChange={entryData} 
+                            className="form-input">
+                        </TextField>
+                        <TextField label="Email" name='email' variant='outlined' value={formData.email} onChange={entryData}
+                            className="form-input">
+                        </TextField>
+                        <TextField label="Phone" name='phone' variant='outlined' value={formData.phone} onChange={entryData}
+                            className="form-input">
+                        </TextField>
+                        <Button variant='outlined' onClick={sendOrder} className='form-btn'>Confirmar datos</Button>
                      </Box>
                     </DialogContent>
                   </>

@@ -7,13 +7,12 @@ const CartWidget = () => {
 
     const { products, total } = useContext(ProductsContext)
     
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const showCart = () => {
         setShow(!show)
     }
 
-    console.log("Productos agregados desde el carrito: ", products)
 
     return(
         <div className="cart-container">

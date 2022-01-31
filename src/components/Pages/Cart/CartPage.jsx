@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { useContext } from "react";
 import ProductsContext from "../../../context/CartContext/CartContext";
-import { Link } from "react-router-dom";
 import images from "../../../assets/images";
 import './CartPage.css'
 import ContactModal from "../../ContactModal/ContactModal";
@@ -17,37 +16,39 @@ const CartPage = () => {
         setOpen(false)
     }
 
-    const {products, total, removeAllProductsInCart, removeProductInCart} = useContext(ProductsContext)
+    const {products, total, removeProductInCart} = useContext(ProductsContext)
     
     
 
     return(
-        <div>
-            <h2>Pagina de carrito</h2>
+        <div className="cartPage-content">
+            <h2>Carrito</h2>
             {
                 <>
                 {products.length === 0 ? 
-                <div>
+                <div className="noProducts">
                     <p>No hay productos</p>
                 </div>
                 :
                 products.map((product) => {
                     return(
                         <div key={product.id} className="cart-list-product">
-                            <img src={images[product.img]} className="product-image"/>
-                            <p>{product.name}</p>
-                            <p>$ {product.price}</p>
-                            <span>Cant: {product.quantity}</span>
-                            <button className="remove-product-btn" onClick={() => removeProductInCart(product)}>Eliminar producto</button>
+                            <img src={images[product.img]} className="product-image" alt="cart-list-product"/>
+                            <div className="cart-list-product__text">
+                                <p>{product.name}</p>
+                                <p>$ {product.price}</p>
+                                <p>Cant: {product.quantity}</p>
+                                <button className="remove-product-btn" onClick={() => removeProductInCart(product)}>Eliminar</button>
+                            </div>
                         </div>
                     )
                 })}
-                <div className="finally-buy">
+                <div className="confirm-buy">
                     <div className="total">
                         <p>Total</p>
                         <span>${total}</span>
                     </div>
-                    {total > 0 && <button onClick={modalFormOpen}>Confirmar compra</button>}
+                    {total > 0 && <button onClick={modalFormOpen} className="confirm-btn">Confirmar compra</button>}
                 </div>
                 </>
             }

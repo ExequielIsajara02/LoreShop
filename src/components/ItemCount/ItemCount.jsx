@@ -11,14 +11,12 @@ const ItemCount = ({stock, onCart, sendItem}) => {
        
         if(number < stock) {
             setNumber(number + 1)
-            console.log("El estado es: " + number)
             onCart(number + 1)
         }
     }
 
     const downNumber = () => {
         if(number >= 1) {
-            console.log("El estado es: " + number)
             setNumber(number - 1)
         }
     }
@@ -26,7 +24,6 @@ const ItemCount = ({stock, onCart, sendItem}) => {
 
     const addCart = () => {
         setAdd(stock - number)
-        console.log("item agregado")
         sendItem()
         
     }

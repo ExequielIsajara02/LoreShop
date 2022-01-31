@@ -16,11 +16,8 @@ const CategoriesContainer = () => {
         const categoriesCol = collection(db, 'category-products');
         const categoriesSnapshot = await getDocs(categoriesCol);
         const categoriesList = categoriesSnapshot.docs.map(doc => {
-            console.log("Documento firebase ID: ", doc.id)
-            console.log("Documento firebase: ", doc.data())
             let categories = doc.data();
             categories.id = doc.id;
-            console.log("Producto final: ", categories)
             return categories
         });
         return categoriesList;
@@ -30,7 +27,6 @@ const CategoriesContainer = () => {
     // Se montara y actualizaran los datos del o los componentes
     useEffect(() => {
         getItemsCategory(db).then((result) => {
-            console.log("La respuesta de la promesa es: ", result)
             setCategories(result)
         })
     }, [])
@@ -41,8 +37,8 @@ const CategoriesContainer = () => {
         <div>
             {categories.map((category) => {
                 return (
-                    <Link to={`/category/${category.category}`} style={{'textDecoration': 'none'}}>
-                        <div key={category.id} className="category-container">
+                    <Link to={`/category/${category.category}`} style={{'textDecoration': 'none'}} key={category.id}>
+                        <div className="category-container">
                             <p className="category-text" style={{'textTransform': 'uppercase'}}>{category.category}</p>
                             <img src={images[category.pictureUrl]} className="category-img" alt={category.title}/>
                         </div>  

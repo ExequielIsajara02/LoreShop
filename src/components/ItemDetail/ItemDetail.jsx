@@ -23,7 +23,6 @@ const ItemDetail = ({id, title, price, img, stock, description}) => {
 
     
     const onCart = (value) => {
-        console.log("El valor del item es " + value)
         itemCart.quantity = value
     }
 

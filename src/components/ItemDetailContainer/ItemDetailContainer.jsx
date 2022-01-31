@@ -18,27 +18,17 @@ const ItemDetailContainer = () => {
         const docRef = doc(db, 'products', id)
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()){
-            console.log("Document ID: ", docSnap.id)
-            console.log("Document data: ", docSnap.data())
-
             let itemDetail = docSnap.data();
             itemDetail.id = docSnap.id
-            console.log("El producto final a mostrar es: ", itemDetail)
             setDetails(itemDetail)
             setLoad(false)
         }
-        else {
-            console.log("No such document")
-        }
+        
     }
 
     useEffect(() =>{
-        /* getProducts(db).then((response) => {
-            setDetails(response)
-            setLoad(false)
-        }) */
         getItemDetail(db)
-    }, [id])
+    }, [])
 
 
     return(

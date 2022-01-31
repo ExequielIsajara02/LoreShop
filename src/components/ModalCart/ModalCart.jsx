@@ -13,17 +13,17 @@ const ModalCart = ({products, total}) => {
             {
                 <>
                 {products.length === 0 ? 
-                <div>
-                    <p>No hay productos</p>
-                    <Link to={'/'}>
-                        <p>Ver mas productos</p>
+                <div className="no-products">
+                    <p className="not-products">No hay productos</p>
+                    <Link to={'/'} style={{'textDecoration' : 'none'}}>
+                        <p className="more-products">Ver más productos</p>
                     </Link>
                 </div>
                 :
                 products.map((product) => {
                     return(
                         <div key={product.id} className="product">
-                            <img src={images[product.img]} className="cart-image"/>
+                            <img src={images[product.img]} className="cart-image" alt='product'/>
                             <p>$ {product.price}</p>
                             <span>Cant: {product.quantity}</span>
                         </div>

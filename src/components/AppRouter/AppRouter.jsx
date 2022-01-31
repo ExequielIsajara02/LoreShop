@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ItemDetailPage from "../Pages/ItemDetailPage/ItemDetailPage";
 import CategoriesItem from "../CategoriesItem/CategoriesItem";
 import CartPage from "../Pages/Cart/CartPage"
+import Footer from "../Footer/Footer";
 
 
 const AppRouter = () => {
@@ -27,8 +28,11 @@ const AppRouter = () => {
                     <Route path='/' element={<HomePage/>} />
                     <Route path='*' element={<NotFoundPage/>} />
                 </Routes>
+                <Footer />
             </>
+           
         </Router>
+        
     )
 }
 

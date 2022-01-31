@@ -1,0 +1,21 @@
+.about-container {
+    width: 100%;
+    height: 100vh;
+    padding-top: 40px;
+}
+
+.about {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.about-p {
+    background-color: #00695c;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: justify;
+    margin-top: 10px;
+}

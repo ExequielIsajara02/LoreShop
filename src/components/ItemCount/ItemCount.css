@@ -26,6 +26,10 @@
     color: #00695c;
 }
 
+.count p {
+    margin-top: 10px;
+}
+
 .add-on {
     display: block;
     width: 200px;

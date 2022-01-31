@@ -1,6 +1,6 @@
 .category-banner {
     display: grid;
-    grid-template-columns: repeat(2,500px);
+    grid-template-columns: repeat(2,450px);
     justify-content: center;
     margin-bottom: 40px;
 }
@@ -9,3 +9,14 @@
     grid-column: 1 / 3;
 }
 
+@media screen and (max-width: 960px){
+    .category-banner {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width: 720px){
+    .category-banner {
+       display: block;
+    }
+}
